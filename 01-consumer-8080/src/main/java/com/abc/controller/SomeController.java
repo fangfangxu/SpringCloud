@@ -25,20 +25,20 @@ public class SomeController {
 
     @DeleteMapping("/del/{id}")
     public void deleteHandler(@PathVariable("id") int id) {
-        String url = SERVICE_PROVIDER + "/provider/depart/del"+id;
+        String url = SERVICE_PROVIDER + "/provider/depart/del/"+id;
         restTemplate.delete(url);
     }
 
 
     @PutMapping("/update")
     public void updateHandler(@RequestBody Depart depart) {
-        String url = SERVICE_PROVIDER + "/provider/depart/save";
+        String url = SERVICE_PROVIDER + "/provider/depart/update";
         restTemplate.put(url, depart);
     }
 
     @GetMapping("/get/{id}")
     public Depart getByIdHandler(@PathVariable("id") int id) {
-        String url = SERVICE_PROVIDER + "/provider/depart/get"+id;
+        String url = SERVICE_PROVIDER + "/provider/depart/get/"+id;
         return restTemplate.getForObject(url, Depart.class);
     }
 
