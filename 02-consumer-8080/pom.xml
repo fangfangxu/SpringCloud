@@ -11,7 +11,7 @@
     <groupId>com.abc</groupId>
     <artifactId>02-consumer-8080</artifactId>
     <version>0.0.1-SNAPSHOT</version>
-    <name>01-consumer-8080</name>
+    <name>02-consumer-8080</name>
     <description>Demo project for Spring Boot</description>
 
     <properties>
