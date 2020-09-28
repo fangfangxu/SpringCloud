@@ -7,12 +7,13 @@ import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
-import java.util.concurrent.TimeUnit;
 
 @Service
 public class DepartServiceImpl implements DepartService {
     @Autowired
     private DepartRepository repository;
+    @Value("${server.port}")
+    private int port;
 
     @Override
     public boolean saveDepart(Depart depart) {
@@ -33,8 +34,7 @@ public class DepartServiceImpl implements DepartService {
         }
         return false;
     }
-    @Value("${server.port}")
-    private int port;
+
     @Override
     public boolean modifyDepart(Depart depart) {
         Depart obj = repository.save(depart);
@@ -57,9 +57,9 @@ public class DepartServiceImpl implements DepartService {
     @Override
     public List<Depart> listAllDeparts() {
         List<Depart> all = repository.findAll();
-        for(Depart depart:all){
-            depart.setName(depart.getName()+port);
-        }
+         for(Depart depart:all){
+             depart.setName(depart.getName()+port);
+         }
         return all;
     }
 }
