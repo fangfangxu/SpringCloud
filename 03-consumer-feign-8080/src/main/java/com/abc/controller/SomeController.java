@@ -47,7 +47,9 @@ public class SomeController {
     public Depart getByIdHandler(@PathVariable("id") int id) {
 //        String url = SERVICE_PROVIDER + "/provider/depart/get/"+id;
 //        return restTemplate.getForObject(url, Depart.class);
-        return service.getDepartById(id);
+        Depart departById = service.getDepartById(id);
+        System.out.println(departById);
+        return departById;
     }
 
     @GetMapping("/list")
