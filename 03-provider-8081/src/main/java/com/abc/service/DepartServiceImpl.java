@@ -43,6 +43,11 @@ public class DepartServiceImpl implements DepartService {
 
     @Override
     public Depart getDepartById(int id) {
+        try {
+            TimeUnit.SECONDS.sleep(3);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
         if (repository.existsById(id)) {
             //在DB中指定的id若不存在，该方法会抛出异常
             Depart one = repository.getOne(id);

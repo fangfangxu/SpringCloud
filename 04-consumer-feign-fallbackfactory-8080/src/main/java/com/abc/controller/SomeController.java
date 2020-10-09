@@ -3,6 +3,7 @@ package com.abc.controller;
 import com.abc.bean.Depart;
 import com.abc.service.DepartService;
 import com.netflix.hystrix.contrib.javanica.annotation.HystrixCommand;
+import com.netflix.hystrix.contrib.javanica.annotation.HystrixProperty;
 import org.springframework.web.bind.annotation.*;
 
 import javax.annotation.Resource;
@@ -47,6 +48,7 @@ public class SomeController {
     //指定该方法要使用服务降级，即当前处理器方法的运行过程中若发生异常，
     //无法给客户端正常响应时，就会调用fallbackMethod指定的方法
     @HystrixCommand(fallbackMethod = "getHystrixHandler")
+//            ,commandProperties=@HystrixProperty(name="execution.isolation.thread.timeoutInMilliseconds",value="2000"))
     @GetMapping("/get/{id}")
     public Depart getByIdHandler(@PathVariable("id") int id) {
         Depart departById = service.getDepartById(id);
